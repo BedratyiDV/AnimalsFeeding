@@ -7,9 +7,9 @@ using System.Xml.Linq;
 
 namespace AnimalsFeeding
 {
-  /// <summary>
- ///Animal place class
- /// </summary>
+    /// <summary>
+    ///Animal place class
+    /// </summary>
     public class AnimalPlace
     {
         /// <summary>
@@ -19,7 +19,7 @@ namespace AnimalsFeeding
 
         private string _animalName;
         private string _food;
-        
+
         /// <summary>
         ///Get method for private property _animalName
         /// </summary>
@@ -40,26 +40,35 @@ namespace AnimalsFeeding
         /// <param name="animalName"> </param> 
         /// <param name="food"> </param> 
         public AnimalPlace(string animalName, string food)
-        {            
-                _animalName = animalName;
-                _food = food;           
+        {
+            _animalName = animalName;
+            _food = food;
         }
         /// <summary>
         ///Method that feeds an animal
         /// </summary>
         /// <param name="amount"> </param> 
-        public void Feed (int amount) 
-        { 
+        public void Feed(int amount)
+        {
             Console.WriteLine($"{_animalName} received {amount} units of food");
         }
         /// <summary>
         ///Method invokes the event to initiate animal feeding
         /// </summary>
-        public void CallFeedEvent() 
-        {
-            FoodFinished.Invoke(this,this._food);
-            Console.WriteLine($"{this._animalName} must be feeded with {this._food} ");
+        public void CallFeedEvent()
 
-        }
+        {
+
+            if (FoodFinished != null)
+
+            {
+                if (1 > 0)
+                {
+                    // Raise (call) the event
+                    FoodFinished(this, this._food);
+                }
+            }
     }
+}
+
 }
